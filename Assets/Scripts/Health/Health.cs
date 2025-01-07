@@ -6,9 +6,6 @@ public class Health : MonoBehaviour
 {
 
     [Header("Health")]
-
-   
-    
     [SerializeField] private float startingHealth;
     public float currentHealth { get; private set; }
 
@@ -70,8 +67,7 @@ public class Health : MonoBehaviour
             // player dies
  
             /* Die(); */
-            // dying animation
-            anim.SetTrigger("die");
+
 
 /*             // disable player movement
             if(GetComponent<PlayerMovement>() != null)
@@ -89,6 +85,10 @@ public class Health : MonoBehaviour
             {
                 component.enabled = false;
             }
+
+            anim.SetBool("grounded", true);
+            // dying animation
+            anim.SetTrigger("die");
             
             dead = true;
 
@@ -128,6 +128,21 @@ public class Health : MonoBehaviour
 
 
     // igonre collision between player and enemy 
+
+
+    public void Respawn() {
+        dead = false;
+        TakeHealth(startingHealth);
+        anim.ResetTrigger("die");
+        anim.Play("Idle");
+        StartCoroutine(Invulnerability());
+
+        // activate all attached component classes
+        foreach (Behaviour component in components)
+        {
+            component.enabled = true;
+        }
+    }
     private IEnumerator Invulnerability() {
         // igonre collation between player and enemy
 
@@ -154,7 +169,7 @@ public class Health : MonoBehaviour
 
 
 
-    private void Deactivate() {
+    public void Deactivate() {
         gameObject.SetActive(false);
     }
 

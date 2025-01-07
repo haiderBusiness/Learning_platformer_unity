@@ -151,6 +151,7 @@ MonoBehaviour:
   damge: 1
   movementDistance: 3
   speed: 5
+  hitPlayerSound: {fileID: 8300000, guid: 350079e7974c4da4d97310cc7642449f, type: 3}
 --- !u!95 &331921996121362695
 Animator:
   serializedVersion: 7

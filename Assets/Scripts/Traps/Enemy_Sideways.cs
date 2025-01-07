@@ -7,6 +7,13 @@ public class Enemy_Sideways : MonoBehaviour
     [SerializeField] private float movementDistance;
     [SerializeField] private float speed;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioClip activeSound;
+    [SerializeField] private AudioClip hitPlayerSound;
+
+    private bool activeSoundIsOn;
+
+
     private bool movingLeft; 
 
     private float leftEdge; 
@@ -25,7 +32,12 @@ public class Enemy_Sideways : MonoBehaviour
 
     private void Update()
     {
-
+        //TODO
+/*         if(activeSound != null && SoundManager.instance != null && !activeSoundIsOn) {
+            SoundManager.instance.PlaySound(activeSound, 0, true);
+            activeSoundIsOn = true;
+        } */
+ 
         if (movingLeft) 
         {
             if(transform.position.x > leftEdge) {
@@ -51,6 +63,9 @@ public class Enemy_Sideways : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            if(hitPlayerSound != null) {
+                SoundManager.instance.PlaySound(hitPlayerSound);
+            }
             collision.GetComponent<Health>().TakeDamage(damge);
         }
     }
