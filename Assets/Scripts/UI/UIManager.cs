@@ -37,10 +37,11 @@ public class UIManager : MonoBehaviour
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.Escape)) {
-
             // if pause screen already active unpause and viceversa
             if(pauseScreen.activeInHierarchy) 
                 PauseGame(false);
+            else if(audioScreen != null && audioScreen.activeInHierarchy)
+                audioScreen.SetActive(false);
             else
                 PauseGame(true);
         }

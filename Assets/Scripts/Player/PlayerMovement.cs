@@ -65,11 +65,11 @@ public class PlayerMovement : MonoBehaviour
 
         // Flip the player sprite based on the input
         if (horizontalInput > 0.01f) {
-            transform.localScale = Vector3.one;
+            transform.localScale = new Vector3(1.41f, 1.41f, 1.41f);
         }
             
         else if (horizontalInput < -0.01f) {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-1.41f, 1.41f, 1.41f);
         }
             
         
